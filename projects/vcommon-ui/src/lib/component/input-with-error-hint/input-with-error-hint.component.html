@@ -1,0 +1,23 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-12-12 14:54:13
+ * @LastEditTime: 2019-12-17 17:10:47
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /ViaeouCommonUI/projects/vcommon-ui/src/lib/component/input-with-error-hint/input-with-error-hint.component.html
+ -->
+<div class="v-input-container">
+    <input class="v-input"
+        [formControl]="_inputType === 'number' ? numberControl : _inputType === 'email' ? emailControl : textControl"
+        [ngStyle]="{'font-size' : _fontSize + 'px'}" [(ngModel)]="_inputValue">
+    <div class="error-hint"
+        *ngIf="(_inputType === 'number' ? numberControl : _inputType === 'email' ? emailControl : textControl).invalid">
+        <div>
+            {{getErrorMessage(_inputType)}}
+        </div>
+    </div>
+    <div *ngIf="_needDeleteInput && _inputValue.length > 0" class="deleteInputWrapper" (click) = "doClean()" onclick="event.cancelBubble=true">
+        <mat-icon [ngStyle]="{'margin': '1.5px'}">
+            close</mat-icon>
+    </div>
+</div>

@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "vcommon-ui": [
+        "dist/vcommon-ui"
+      ],
+      "vcommon-ui/*": [
+        "dist/vcommon-ui/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

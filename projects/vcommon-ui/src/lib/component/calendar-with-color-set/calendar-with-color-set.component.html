@@ -1,0 +1,29 @@
+<!--
+ * @Author: your name
+ * @Date: 2019-12-13 15:25:19
+ * @LastEditTime: 2019-12-17 15:12:07
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /ViaeouCommonUI/projects/vcommon-ui/src/lib/component/calendar-with-color-set/calendar-with-color-set.component.html
+ -->
+<div class="dateInputWrapper" id="dateInputWrapper" (click)="picker.open()">
+    <input readonly="true" matInput [matDatepicker]="picker" [value]="_setting.date" [min]="_setting.startDate"
+        [max]="_setting.endDate" placeholder="{{_setting.placeholder}}" [ngStyle]="{'height': _setting.inputWidth && _setting.inputHeight ? _setting.inputHeight - 4 + 'px' : 'calc(100% - 2px)',
+        'width': _setting.inputWidth && _setting.inputHeight ? _setting.inputWidth - 3 - _setting.inputHeight + 'px' : 'calc(100% - 30px)', 
+        'padding-left.px': _inputHeight}" (dateChange)="dateChangeEvent($event)">
+    <div class="dateIconWrapper" [ngStyle]="{'height.px': _setting.inputHeight,'width.px': _setting.inputHeight}">
+        <svg fill="currentColor" focusable="false" width="18px" height="18px" viewBox="0 0 24 24"
+            [ngStyle]="{'color': _setting.iconColor,'margin': _margin + 'px'}">
+            <path
+                d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z">
+            </path>
+        </svg>
+    </div>
+    <div *ngIf="_setting.needClear && _setting.date" class="deleteIconWrapper"
+        [ngStyle]="{'height.px': _setting.inputHeight,'width.px': _setting.inputHeight}" (click) = "doClean($event)" onclick="event.cancelBubble=true">
+        <mat-icon [ngStyle]="{'color': _setting.iconColor, 'margin': '1.5px'}">
+            close</mat-icon>
+    </div>
+</div>
+<!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
+<mat-datepicker #picker (opened)="set()"></mat-datepicker>
